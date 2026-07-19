@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Man Van Truong — Head of Technology</title>
+  <meta name="description" content="Head of Technology at Midu Group. AI-native engineering: 12 production systems, LLM/RAG products, 2× delivery throughput with a 7-person team." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* Preloader — inline so it paints before the JS bundle arrives (it is the
+       first paint; nothing behind it is ever visible during load). */
+    #preloader {
+      position: fixed;
+      inset: 0;
+      z-index: 300;
+      display: grid;
+      place-content: center;
+      justify-items: center;
+      gap: 20px;
+      background: radial-gradient(ellipse at 50% 40%, #0a0e16 0%, #04060a 70%, #020306 100%);
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+    }
+    .pre-count {
+      font-size: clamp(64px, 14vw, 140px);
+      font-weight: 500;
+      color: #6fe3ff;
+      text-shadow: 0 0 60px rgba(111, 227, 255, 0.35);
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+    }
+    .pre-pct { font-size: 0.35em; vertical-align: super; opacity: 0.7; margin-left: 6px; }
+    .pre-track {
+      width: min(320px, 60vw);
+      height: 2px;
+      background: rgba(232, 237, 246, 0.12);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    #preBar {
+      display: block;
+      height: 100%;
+      width: 100%;
+      background: #6fe3ff;
+      transform: scaleX(0);
+      transform-origin: left;
+    }
+    .pre-label { color: #9aa5b8; font-size: 12px; letter-spacing: 0.12em; }
+  </style>
+</head>
+<body>
+  <div id="preloader" aria-hidden="true">
+    <div class="pre-count"><span id="preCount">0</span><span class="pre-pct">%</span></div>
+    <div class="pre-track"><span id="preBar"></span></div>
+    <p class="pre-label">// booting portfolio</p>
+  </div>
+  <header class="site-header" id="siteHeader">
+    <a class="brand" href="#hero">MVT<span class="brand-dot">.</span></a>
+    <nav class="site-nav">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a class="nav-cta" href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ======== HERO ======== -->
+    <section class="hero section" id="hero" data-accent="111 227 255">
+      <p class="hero-kicker mono" data-hero="kicker">// head of technology · hanoi</p>
+      <h1 class="hero-title">
+        <span class="hero-line" data-hero="line">Man Van</span>
+        <span class="hero-line hero-line--accent" data-hero="line">Truong<span class="cursor-caret">_</span></span>
+      </h1>
+      <p class="hero-sub" data-hero="sub">
+        I turn lean teams into <strong>AI-native engineering organizations</strong> —
+        12 production systems, LLM/RAG products on Zalo, and 2× delivery throughput
+        with 7 people instead of 12.
+      </p>
+      <div class="hero-actions" data-hero="actions">
+        <a class="btn btn--primary" href="#projects">See the work</a>
+        <a class="btn btn--ghost" href="#contact">Get in touch</a>
+      </div>
+      <div class="scroll-hint" data-hero="hint" aria-hidden="true">
+        <span class="scroll-hint-wheel"></span>
+        <span class="mono">scroll</span>
+      </div>
+    </section>
+
+    <!-- ======== STATS ======== -->
+    <section class="stats section" id="stats" data-accent="111 227 255">
+      <div class="stats-grid" id="statsGrid"></div>
+    </section>
+
+    <!-- ======== ABOUT ======== -->
+    <section class="about section" id="about" data-accent="140 160 255">
+      <p class="section-index mono">01</p>
+      <h2 class="section-title" data-reveal>About</h2>
+      <div class="about-body">
+        <p class="about-lead" data-reveal>
+          Head of Technology at <strong>Midu Group</strong> — I own the company's entire
+          technology: 12 production systems across 21 repositories, a 7-person engineering
+          team, and the infrastructure they run on.
+        </p>
+        <p data-reveal>
+          My bet is simple: a small team with AI in its bloodstream outships a big one.
+          We made <strong>Claude Code the team's standard workflow</strong>, encoded our design
+          system and coding standards into custom skill plugins, shipped an
+          <strong>LLM assistant with RAG</strong> on the Zalo customer channel — and the same
+          portfolio now ships roughly twice as fast, with five fewer people.
+        </p>
+        <p data-reveal>
+          Under it all: TypeScript end to end — Next.js/React in front, NestJS/Express +
+          MongoDB behind, self-hosted GitLab CI/CD, a multi-VPS fleet with cross-server
+          replication, and zero data-loss incidents to date.
+        </p>
+      </div>
+    </section>
+
+    <!-- ======== EXPERIENCE ======== -->
+    <section class="experience section" id="experience" data-accent="150 255 190">
+      <p class="section-index mono">02</p>
+      <h2 class="section-title" data-reveal>Experience</h2>
+      <div class="timeline" id="timeline">
+        <div class="timeline-rail" aria-hidden="true"><span class="timeline-rail-fill" id="railFill"></span></div>
+        <div class="timeline-items" id="timelineItems"></div>
+      </div>
+    </section>
+
+    <!-- ======== PROJECTS ======== -->
+    <section class="projects section" id="projects" data-accent="255 180 120">
+      <p class="section-index mono">03</p>
+      <h2 class="section-title" data-reveal>Selected systems</h2>
+      <p class="section-sub" data-reveal>Twelve systems run in production. These carry the most weight.</p>
+      <div class="projects-grid" id="projectsGrid"></div>
+    </section>
+
+    <!-- ======== SKILLS ======== -->
+    <section class="skills section" id="skills" data-accent="220 140 255">
+      <p class="section-index mono">04</p>
+      <h2 class="section-title" data-reveal>Stack &amp; skills</h2>
+      <div class="skills-rows" id="skillsRows"></div>
+    </section>
+
+    <!-- ======== CONTACT ======== -->
+    <section class="contact section" id="contact" data-accent="111 227 255">
+      <p class="section-index mono">05</p>
+      <h2 class="contact-title" data-reveal>Let's build something<br /><span class="contact-title-accent">unreasonably efficient.</span></h2>
+      <div class="contact-links" id="contactLinks"></div>
+      <footer class="site-footer">
+        <p class="mono">© 2026 Man Van Truong — built with Vite · Three.js · GSAP · Lenis</p>
+      </footer>
+    </section>
+  </main>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
