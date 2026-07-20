@@ -311,6 +311,13 @@ main { position: relative; z-index: 1; }
   flex-direction: column;
   gap: 14px;
   transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  /* project card is now a <button> — strip native button styling */
+  appearance: none;
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
 }
 .project-card:hover {
   transform: translateY(-6px);
@@ -588,4 +595,17 @@ a.contact-link:hover { padding-left: 14px; border-color: rgb(var(--accent) / 0.6
 }
 @media (max-height: 560px) {
   .term__scene { display: none; }
+}
+
+/* project modal — reuses .term chrome */
+.pjm__win { width: min(680px, 92vw); height: auto; max-height: 80vh; }
+.pjm__out {
+  margin: 0;
+  padding: 0.4rem 0.2rem;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--ink);
+  white-space: pre-wrap;
+  overflow: auto;
 }
