@@ -2,7 +2,7 @@ import { gsap } from '../core/gsap.js'
 import { renderLifecycle } from '../core/render-lifecycle.js'
 import { getLenis } from '../core/smooth-scroll.js'
 import { el } from './dom.js'
-import { typeLines } from './typewriter.js'
+import { typeInto } from './typewriter.js'
 import { projectToLines } from '../data/project-merge.js'
 
 let current = null // { overlay, trigger, ctrl }
@@ -38,7 +38,12 @@ export function openProject(project, labels) {
   current = { overlay, trigger, ctrl }
 
   overlay.focus({ preventScroll: true })
-  typeLines(out, [`$ cat ./${repo}.md`, '', ...projectToLines(project, labels)], { signal: ctrl.signal })
+  // Type the command like a real shell, then dump the file at once (cat doesn't
+  // type). Keeps long, detailed content readable instead of a slow char crawl.
+  const body = projectToLines(project, labels).join('\n')
+  typeInto(out, `$ cat ./${repo}.md\n\n`, { signal: ctrl.signal }).then(() => {
+    if (!ctrl.signal.aborted) out.textContent += body
+  })
 
   overlay.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeProject() })
   overlay.addEventListener('click', (e) => { if (e.target === overlay) closeProject() })
