@@ -61,8 +61,12 @@ export function renderContent() {
     if (!card) return
     const project = projectsById.get(card.dataset.projectId)
     if (!project) return
-    const { openProject } = await import('./ProjectModal.js')
-    openProject(project, PROJECT_GROUP_LABELS)
+    try {
+      const { openProject } = await import('./ProjectModal.js')
+      openProject(project, PROJECT_GROUP_LABELS)
+    } catch (err) {
+      console.error('failed to open project modal', err)
+    }
   })
 
   document.getElementById('skillsRows').innerHTML = SKILLS.map(

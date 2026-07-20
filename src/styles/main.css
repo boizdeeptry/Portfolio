@@ -600,6 +600,8 @@ a.contact-link:hover { padding-left: 14px; border-color: rgb(var(--accent) / 0.6
 /* project modal — reuses .term chrome */
 .pjm__win { width: min(680px, 92vw); height: auto; max-height: 80vh; }
 .pjm__out {
+  flex: 1;
+  min-height: 0;
   margin: 0;
   padding: 0.4rem 0.2rem;
   font-family: var(--font-mono);
