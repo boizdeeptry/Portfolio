@@ -9,10 +9,9 @@ import { gsap } from '../core/gsap.js'
 import { ParticleField } from './ParticleField.js'
 
 // Camera waypoint per section — a slow dolly ride through the field
-// (hero, stats, about, experience, projects, skills, contact).
+// (hero, about, experience, projects, skills, contact).
 const CAM = [
   { x: 0, y: 0, z: 10, tilt: 0 },
-  { x: 1.2, y: 1.6, z: 14, tilt: 0.04 },
   { x: -1.4, y: -0.8, z: 12, tilt: -0.05 },
   { x: 1.8, y: 2.2, z: 16, tilt: 0.06 },
   { x: -1.2, y: -1.6, z: 12.5, tilt: -0.04 },

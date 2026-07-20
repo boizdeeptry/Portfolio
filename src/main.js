@@ -11,7 +11,6 @@ import {
   animateHero,
   animateReveals,
   animateScrambles,
-  animateStats,
   animateTimeline,
   trackAccents,
 } from './ui/reveal.js'
@@ -25,7 +24,8 @@ function boot() {
   // Gate once per browser session: after the first entry, reloads (dev HMR,
   // F5, back/forward) land straight on the content instead of replaying the
   // preloader + terminal intro.
-  const entered = sessionStorage.getItem(ENTERED_KEY) === '1'
+  // In dev the gate is off so the preloader + terminal intro always replay on reload.
+  const entered = !import.meta.env.DEV && sessionStorage.getItem(ENTERED_KEY) === '1'
   if (!entered) getLenis().stop() // locked behind the terminal intro
 
   const canvas = document.createElement('canvas')
@@ -39,14 +39,14 @@ function boot() {
 
   animateReveals()
   animateScrambles()
-  animateStats()
   animateTimeline()
   animateHeader()
   mountCursor()
 
   // Boot order: the inline preloader (0 → 100) is the true first paint; the
-  // 3D stage streams in behind it. When assets are ready the loader hands off
-  // to the terminal intro, whose dismissal unlocks scroll + fires the hero.
+  // 3D stage streams in behind it. At 100% the loader mounts the terminal intro
+  // beneath its still-opaque overlay, then fades to reveal it (no hero flash) —
+  // the terminal's dismissal unlocks scroll + fires the hero.
   let resolveStage
   const stageReady = new Promise((resolve) => { resolveStage = resolve })
 
@@ -66,15 +66,17 @@ function boot() {
   if (entered) {
     document.getElementById('preloader')?.remove()
   } else {
-    runPreloader({ ready: stageReady }).then(() => {
-      mountTerminalIntro({
-        gateReady: stageReady,
-        onDismiss: () => {
-          sessionStorage.setItem(ENTERED_KEY, '1')
-          getLenis().start()
-          animateHero()
-        },
-      })
+    runPreloader({
+      ready: stageReady,
+      onReveal: () =>
+        mountTerminalIntro({
+          gateReady: stageReady,
+          onDismiss: () => {
+            sessionStorage.setItem(ENTERED_KEY, '1')
+            getLenis().start()
+            animateHero()
+          },
+        }),
     })
   }
 

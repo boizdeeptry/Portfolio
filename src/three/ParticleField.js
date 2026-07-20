@@ -9,7 +9,7 @@ import {
 import { gsap } from '../core/gsap.js'
 import { particlesFragment, particlesVertex } from './shaders/particles.glsl.js'
 
-const COUNT = 2600
+const COUNT = 5200
 const Z_BASE = -4
 
 /* ---- formation generators ---- */
@@ -20,21 +20,6 @@ const cloud = () => {
     a[i * 3] = (Math.random() * 2 - 1) * 22
     a[i * 3 + 1] = (Math.random() * 2 - 1) * 14
     a[i * 3 + 2] = 4 - Math.random() * 28
-  }
-  return a
-}
-
-const lattice = () => {
-  const a = new Float32Array(COUNT * 3)
-  const side = Math.ceil(Math.cbrt(COUNT))
-  const s = 13 / side
-  for (let i = 0; i < COUNT; i++) {
-    const x = i % side
-    const y = Math.floor(i / side) % side
-    const z = Math.floor(i / (side * side))
-    a[i * 3] = (x - side / 2) * s
-    a[i * 3 + 1] = (y - side / 2) * s
-    a[i * 3 + 2] = (z - side / 2) * s + Z_BASE
   }
   return a
 }
@@ -67,11 +52,21 @@ const textPoints = (text, { maxH = 10, maxW = 30, depth = 1.4 } = {}) => {
   }
   if (!pts.length) return cloud() // canvas blocked or empty glyph — degrade gracefully
 
+  // Even coverage: shuffle the inked points, then hand them out round-robin so
+  // every particle lands on a distinct point (long strings) or cycles evenly
+  // (short glyphs) — no random clumps or wasted overlaps that thin the shape.
+  for (let i = pts.length - 1; i > 0; i--) {
+    const j = (Math.random() * (i + 1)) | 0
+    const t = pts[i]
+    pts[i] = pts[j]
+    pts[j] = t
+  }
+
   const aspect = w / h
   const sizeH = Math.min(maxH, maxW / aspect)
   const a = new Float32Array(COUNT * 3)
   for (let i = 0; i < COUNT; i++) {
-    const [px, py] = pts[(Math.random() * pts.length) | 0]
+    const [px, py] = pts[i % pts.length]
     a[i * 3] = px * sizeH * aspect + (Math.random() - 0.5) * 0.14
     a[i * 3 + 1] = py * sizeH + (Math.random() - 0.5) * 0.14
     a[i * 3 + 2] = (Math.random() - 0.5) * depth + Z_BASE
@@ -80,17 +75,16 @@ const textPoints = (text, { maxH = 10, maxW = 30, depth = 1.4 } = {}) => {
 }
 
 // One formation per page section, in DOM order:
-// hero, stats, about → M, experience → V, projects → T, skills → MVT, contact → MVT-boizdeeptry
+// hero → cloud, about → M, experience → V, projects → T, skills → MVT, contact → boizdeeptry
 const buildFormations = () => [
   cloud(),
-  lattice(),
   textPoints('M'),
   textPoints('V'),
   textPoints('T'),
   textPoints('MVT', { maxH: 8.5 }),
-  textPoints('MVT-boizdeeptry', { maxH: 5, maxW: 26 }),
+  textPoints('boizdeeptry', { maxH: 8, maxW: 34 }),
 ]
-const DRIFT = [0.6, 0.08, 0.07, 0.07, 0.07, 0.07, 0.09]
+const DRIFT = [0.6, 0.07, 0.07, 0.07, 0.07, 0.09]
 
 /**
  * Morphing GPU particle field — particles fly between per-section formations

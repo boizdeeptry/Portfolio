@@ -1,18 +1,13 @@
-import { CONTACT, EXPERIENCE, PROJECTS, SKILLS, STATS } from '../data/profile.js'
+import * as en from '../data/profile.js'
+import * as vi from '../data/profile.vi.js'
+
+// Language is declared by the page (<html lang>) — one bundle serves both.
+const { CONTACT, EXPERIENCE, PROJECTS, SKILLS } = document.documentElement.lang === 'vi' ? vi : en
 
 const html = (strings, ...values) => strings.reduce((out, s, i) => out + s + (values[i] ?? ''), '')
 
 /** Render all data-driven sections into their containers. */
 export function renderContent() {
-  document.getElementById('statsGrid').innerHTML = STATS.map(
-    (s) => html`
-      <div class="stat" data-reveal>
-        <span class="stat-value mono" data-count="${s.value}" data-suffix="${s.suffix ?? ''}">0</span>
-        <span class="stat-label">${s.label}</span>
-      </div>
-    `,
-  ).join('')
-
   document.getElementById('timelineItems').innerHTML = EXPERIENCE.map(
     (job) => html`
       <article class="timeline-item" data-reveal>

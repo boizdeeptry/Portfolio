@@ -72,6 +72,10 @@ export function mountTerminalIntro({ gateReady, onDismiss } = {}) {
     renderLifecycle.setCovered(false)
     typing.abort()
     clearInterval(clockId)
+    // Fire the page reveal while the overlay is still opaque, so the hero sets
+    // its hidden/scrambled state behind the cover and animates in *through* the
+    // fade — instead of flashing its final text before the animation starts.
+    onDismiss?.()
     gsap.to(overlay, {
       opacity: 0,
       duration: 0.5,
@@ -81,7 +85,6 @@ export function mountTerminalIntro({ gateReady, onDismiss } = {}) {
         overlay.remove()
         document.body.classList.remove('terminal-open')
         ScrollTrigger.refresh()
-        onDismiss?.()
       },
     })
   }

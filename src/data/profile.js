@@ -1,12 +1,5 @@
 // All portfolio content lives here — one file to edit, zero markup to touch.
 
-export const STATS = [
-  { value: 12, label: 'Production systems' },
-  { value: 21, label: 'Repositories owned' },
-  { value: 7, label: 'Engineers led' },
-  { value: 2, suffix: '×', label: 'Delivery throughput' },
-]
-
 export const EXPERIENCE = [
   {
     company: 'Midu Group (MenaQ7)',

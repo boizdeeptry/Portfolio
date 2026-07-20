@@ -5,7 +5,7 @@ const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', '
 const pad2 = (n) => String(n).padStart(2, '0')
 
 export const TERMINAL = {
-  host: 'truong@portfolio',
+  host: 'boizdeeptry@portfolio',
   shell: 'bash 5.2.26',
   login(date = new Date()) {
     const time = `${pad2(date.getHours())}:${pad2(date.getMinutes())}:${pad2(date.getSeconds())}`

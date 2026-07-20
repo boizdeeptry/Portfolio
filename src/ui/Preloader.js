@@ -4,9 +4,11 @@ import { gsap } from '../core/gsap.js'
  * Drive the inline #preloader (0 → 100). The counter crawls to 90 while assets
  * load, then snaps to 100 once `ready` resolves (min display time keeps it from
  * blinking on fast loads; a hard timeout keeps it from ever hanging the door).
+ * `onReveal` fires at 100% while the overlay is still opaque — mount whatever
+ * should sit beneath it there, so the fade-out reveals that and never the page.
  * Resolves after the overlay has faded out and been removed.
  */
-export function runPreloader({ ready = Promise.resolve(), minDuration = 1.8, maxWait = 6000 } = {}) {
+export function runPreloader({ ready = Promise.resolve(), minDuration = 1.8, maxWait = 6000, onReveal } = {}) {
   const root = document.getElementById('preloader')
   if (!root) return Promise.resolve()
   const count = root.querySelector('#preCount')
@@ -37,6 +39,7 @@ export function runPreloader({ ready = Promise.resolve(), minDuration = 1.8, max
           ease: 'power1.in',
           onUpdate: render,
           onComplete: () => {
+            onReveal?.() // mount the terminal underneath before the fade reveals it
             gsap.to(root, {
               autoAlpha: 0,
               duration: 0.45,

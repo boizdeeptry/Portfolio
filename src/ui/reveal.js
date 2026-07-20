@@ -1,11 +1,39 @@
 import { gsap, ScrollTrigger } from '../core/gsap.js'
 
-/** Hero entrance — plays once on load. */
+/* Terminal-style scramble: characters flicker through random glyphs, then
+ * settle left-to-right into the final text (igloo text-glitch nod). */
+const GLYPHS = '!<>-_\\/[]{}—=+*^?#'
+const glyph = () => GLYPHS[(Math.random() * GLYPHS.length) | 0]
+
+function scramble(node, final, { duration = 850, delay = 0 } = {}) {
+  const roll = (settled) =>
+    final
+      .split('')
+      .map((c, i) => (i < settled || c === ' ' ? c : glyph()))
+      .join('')
+  node.nodeValue = roll(0) // mask the final text immediately — no first-frame flash
+  const start = performance.now() + delay
+  const step = (now) => {
+    const p = Math.min(Math.max(now - start, 0) / duration, 1)
+    node.nodeValue = p < 1 ? roll(Math.floor(p * final.length)) : final
+    if (p < 1) requestAnimationFrame(step)
+  }
+  requestAnimationFrame(step)
+}
+
+/** Hero entrance — the title scrambles in, the rest fades up. Plays once on load. */
 export function animateHero() {
-  const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
-  tl.from('[data-hero="kicker"]', { y: 24, autoAlpha: 0, duration: 0.7 })
-    .from('[data-hero="line"]', { yPercent: 110, duration: 1.0, stagger: 0.12 }, '-=0.35')
-    .from('[data-hero="sub"]', { y: 28, autoAlpha: 0, duration: 0.8 }, '-=0.5')
+  document.querySelectorAll('.hero-title [data-hero="line"]').forEach((line, i) => {
+    const textNode = line.firstChild // leading text node; keeps the caret span intact
+    if (textNode?.nodeType === Node.TEXT_NODE) {
+      scramble(textNode, textNode.nodeValue, { delay: 350 + i * 160 })
+    }
+  })
+
+  gsap
+    .timeline({ defaults: { ease: 'power3.out' } })
+    .from('[data-hero="kicker"]', { y: 24, autoAlpha: 0, duration: 0.7 })
+    .from('[data-hero="sub"]', { y: 28, autoAlpha: 0, duration: 0.8 }, '+=0.6')
     .from('[data-hero="actions"]', { y: 24, autoAlpha: 0, duration: 0.7 }, '-=0.5')
     .from('[data-hero="hint"]', { autoAlpha: 0, duration: 0.8 }, '-=0.2')
 }
@@ -23,20 +51,17 @@ export function animateReveals() {
   })
 }
 
-/** Count-up numbers in the stats strip. */
-export function animateStats() {
-  document.querySelectorAll('[data-count]').forEach((el) => {
-    const target = Number(el.dataset.count)
-    const suffix = el.dataset.suffix || ''
-    const state = { v: 0 }
-    gsap.to(state, {
-      v: target,
-      duration: 1.6,
-      ease: 'power2.out',
-      scrollTrigger: { trigger: el, start: 'top 88%' },
-      onUpdate: () => {
-        el.textContent = `${Math.round(state.v)}${suffix}`
-      },
+/** Scramble reveal for single-line section titles, fired once on scroll-in. */
+export function animateScrambles() {
+  document.querySelectorAll('.section-title').forEach((title) => {
+    const textNode = title.firstChild // single text node; multi-line titles are skipped
+    if (textNode?.nodeType !== Node.TEXT_NODE) return
+    const final = textNode.nodeValue
+    ScrollTrigger.create({
+      trigger: title,
+      start: 'top 86%',
+      once: true,
+      onEnter: () => scramble(textNode, final),
     })
   })
 }
@@ -58,7 +83,7 @@ export function animateTimeline() {
 /** Header gains a backdrop once you leave the hero. */
 export function animateHeader() {
   ScrollTrigger.create({
-    trigger: '#stats',
+    trigger: '#about',
     start: 'top 80%',
     onEnter: () => document.getElementById('siteHeader').classList.add('is-scrolled'),
     onLeaveBack: () => document.getElementById('siteHeader').classList.remove('is-scrolled'),
@@ -83,34 +108,4 @@ export function trackAccents(onSection) {
       },
     })
   })
-}
-
-/* Terminal-style scramble reveal for section titles (igloo text-glitch nod). */
-const GLYPHS = '!<>-_\\/[]{}—=+*^?#'
-export function animateScrambles() {
-  document.querySelectorAll('.section-title, .contact-title').forEach((base) => {
-    const target = base.classList.contains('contact-title') ? null : base
-    if (!target) return // keep the multi-line contact title on the fade path
-    const final = target.textContent
-    ScrollTrigger.create({
-      trigger: target,
-      start: 'top 86%',
-      once: true,
-      onEnter: () => scramble(target, final),
-    })
-  })
-}
-
-function scramble(node, final, duration = 850) {
-  const start = performance.now()
-  const step = (now) => {
-    const p = Math.min((now - start) / duration, 1)
-    const settled = Math.floor(p * final.length)
-    node.textContent = final
-      .split('')
-      .map((c, i) => (i < settled || c === ' ' ? c : GLYPHS[(Math.random() * GLYPHS.length) | 0]))
-      .join('')
-    if (p < 1) requestAnimationFrame(step)
-  }
-  requestAnimationFrame(step)
 }
