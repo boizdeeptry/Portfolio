@@ -1,13 +1,27 @@
 import * as en from '../data/profile.js'
 import * as vi from '../data/profile.vi.js'
-
-// Language is declared by the page (<html lang>) — one bundle serves both.
-const { CONTACT, EXPERIENCE, PROJECTS, SKILLS } = document.documentElement.lang === 'vi' ? vi : en
+import { PROJECTS as CORES } from '../data/projects.js'
+import { mergeProjects } from '../data/project-merge.js'
+// NOTE: do NOT statically import ProjectModal.js here — it pulls gsap/lenis.
 
 const html = (strings, ...values) => strings.reduce((out, s, i) => out + s + (values[i] ?? ''), '')
 
+/** Pure: one project card's HTML. Card is a <button> so it is keyboard-focusable. */
+export function projectCardHTML(p) {
+  return html`
+    <button type="button" class="project-card" data-project-id="${p.id}" data-reveal>
+      <div class="project-top"><h3>${p.name}</h3><span class="mono project-role">${p.role}</span></div>
+      <p>${p.summary}</p>
+      <div class="project-stack">${p.stack.map((t) => `<span class="tag mono">${t}</span>`).join('')}</div>
+    </button>`
+}
+
 /** Render all data-driven sections into their containers. */
 export function renderContent() {
+  // Language is declared by the page (<html lang>) — one bundle serves both.
+  const locale = document.documentElement.lang === 'vi' ? vi : en
+  const { CONTACT, EXPERIENCE, SKILLS, PROJECT_GROUP_LABELS } = locale
+
   document.getElementById('timelineItems').innerHTML = EXPERIENCE.map(
     (job) => html`
       <article class="timeline-item" data-reveal>
@@ -35,18 +49,21 @@ export function renderContent() {
     `,
   ).join('')
 
-  document.getElementById('projectsGrid').innerHTML = PROJECTS.map(
-    (p) => html`
-      <article class="project-card" data-reveal>
-        <div class="project-top">
-          <h3>${p.name}</h3>
-          <span class="mono project-role">${p.role}</span>
-        </div>
-        <p>${p.desc}</p>
-        <div class="project-stack">${p.stack.map((t) => `<span class="tag mono">${t}</span>`).join('')}</div>
-      </article>
-    `,
-  ).join('')
+  const projects = mergeProjects(locale.PROJECTS, CORES)
+  const projectsById = new Map(projects.map((p) => [p.id, p]))
+
+  const grid = document.getElementById('projectsGrid')
+  grid.innerHTML = projects.map(projectCardHTML).join('')
+  // Delegated open — cards are buttons, so Enter/Space fire click natively.
+  // Lazy-import keeps gsap/lenis out of the initial bundle until first open.
+  grid.addEventListener('click', async (e) => {
+    const card = e.target.closest('[data-project-id]')
+    if (!card) return
+    const project = projectsById.get(card.dataset.projectId)
+    if (!project) return
+    const { openProject } = await import('./ProjectModal.js')
+    openProject(project, PROJECT_GROUP_LABELS)
+  })
 
   document.getElementById('skillsRows').innerHTML = SKILLS.map(
     (row) => html`
