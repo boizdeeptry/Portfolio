@@ -71,6 +71,17 @@ export const PROJECTS = [
     ],
   },
   {
+    id: 'xwealth',
+    repo: 'x-wealth',
+    stack: ['Next.js', 'GraphQL', 'Highcharts'],
+    skills: [
+      { group: 'frontend', items: ['Next.js 13', 'React 18', 'Ant Design', 'Tailwind'] },
+      { group: 'data', items: ['Apollo Client', 'graphql-ws (subscriptions)', 'React Query', 'Recoil'] },
+      { group: 'infra', items: ['Kubernetes', 'GitLab CI', 'SonarQube'] },
+      { group: 'patterns', items: ['Atom-per-symbol realtime', 'Trading-session gating', 'Decimal tick-size math', 'WebGL charting (Highcharts boost)'] },
+    ],
+  },
+  {
     id: 'zalo-llm',
     repo: null, // described from experience — no single public repo
     stack: ['NestJS', 'RAG', 'Fine-tuned LLMs'],

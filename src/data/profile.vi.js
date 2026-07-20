@@ -88,6 +88,19 @@ export const PROJECTS = [
     ],
   },
   {
+    id: 'xwealth', name: 'xWealth — Nền tảng đầu tư bán lẻ', role: 'Fullstack Developer · DATX',
+    summary: 'Nền tảng đánh giá cổ phiếu và tín hiệu giao dịch realtime cho nhà đầu tư cá nhân Việt Nam.',
+    problem: 'Stream giá và rating realtime theo từng mã vào một UI giao dịch lồng sâu suốt cả phiên — mà không re-render cả bảng mỗi tick hay rớt socket.',
+    highlights: [
+      'State realtime hạt mịn: ~7 subscription GraphQL đồng thời đổ mỗi tick vào một atom Recoil khóa theo mã, nên một cập nhật giá chỉ re-render đúng ô chứa mã đó — không phải bảng cha. Khác biệt giữa ticker mượt và ticker giật.',
+      'Transport chịu lỗi tốt: graphql-ws cho subscription (keepalive + đóng khi mất pong + retry vô hạn), HTTP cho query/mutation — feed phải sống suốt cả phiên giao dịch.',
+      'Lọc đúng nghiệp vụ: tick vào được gate ở client theo khung giờ phiên từng sàn (HOSE / HNX / UPCOM), nên giá cũ ngoài giờ không bao giờ hiển thị.',
+      'Toán tiền bằng decimal.js: giá snap về bước giá theo sàn (10/50/100đ) với làm tròn tường minh — không trôi số float trên giá trị tài chính.',
+      'Chart dữ liệu lớn: Highcharts với module boost (WebGL) + treemap heatmap, vì SVG thường nghẽn ở kích thước series này.',
+      'Quy mô: 44 operation GraphQL và ~330 component sau pipeline Kubernetes đa môi trường có SonarQube gate. Phạm vi thật: frontend tiêu thụ model rating phía server của DATX — thuật toán chấm điểm nằm ở backend, không ở đây.',
+    ],
+  },
+  {
     id: 'prm', name: 'PRM — Nền tảng phân phối & hoa hồng', role: 'Tech Lead · team 8 người',
     summary: 'Nền tảng phân phối đa tầng cho nhà thuốc/đại lý: đơn hàng, kho, thanh toán và hoa hồng.',
     problem: 'Trả đúng hoa hồng cho mọi mắt xích trong cây phân phối F0 → F1 → F2, nơi payout của cấp cha phụ thuộc doanh thu các con trong cửa sổ chính sách theo ngày — và phải luôn đúng mỗi khi policy, tầng hay đơn hàng thay đổi.',

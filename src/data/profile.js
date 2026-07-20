@@ -88,6 +88,19 @@ export const PROJECTS = [
     ],
   },
   {
+    id: 'xwealth', name: 'xWealth — Retail Investing Platform', role: 'Fullstack Developer · DATX',
+    summary: 'A live stock-evaluation and trading-signal platform for Vietnamese retail investors.',
+    problem: 'Stream live per-symbol price and rating ticks into a large, deeply-nested trading UI all session long — without re-rendering the whole table on every tick or dropping the socket.',
+    highlights: [
+      'Fine-grained realtime state: ~7 concurrent GraphQL subscriptions fan each tick into a Recoil atom keyed per symbol, so a price update re-renders only the single cell holding that symbol — not the parent table. The difference between a smooth ticker and a janky one.',
+      'Reconnect-resilient transport: graphql-ws for subscriptions (keepalive + missed-pong close + infinite retry), HTTP for queries/mutations — a feed that has to stay live through the whole trading session.',
+      'Domain-correct filtering: incoming ticks are gated client-side by each exchange’s session window (HOSE / HNX / UPCOM), so stale off-hours prices never render.',
+      'Money math with decimal.js: prices snap to exchange-specific tick-size bands (10/50/100 VND) with explicit rounding — no float drift on financial values.',
+      'Large-dataset charting: Highcharts with the WebGL boost module + treemap heatmaps, because plain SVG rendering chokes at these series sizes.',
+      'Scale: 44 GraphQL operations and ~330 components behind a SonarQube-gated, multi-env Kubernetes pipeline. Honest scope: a frontend consuming DATX’s server-side rating model — the scoring algorithm lives on the backend, not here.',
+    ],
+  },
+  {
     id: 'prm', name: 'PRM — Distribution & Commission Platform', role: 'Tech Lead · team of 8',
     summary: 'A multi-tier pharmacy/agent distribution platform: orders, warehouse, payments and commissions.',
     problem: 'Pay the right commission to every actor in an F0 → F1 → F2 distribution tree, where a parent’s payout depends on its children’s revenue inside date-bounded policy windows — and it has to stay correct every time a policy, tier or order changes.',
