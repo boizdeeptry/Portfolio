@@ -62,43 +62,27 @@ export const EXPERIENCE = [
 ]
 
 export const PROJECTS = [
-  {
-    name: 'DDCC — Dự đoán chiều cao',
-    role: 'Tech Lead',
-    desc: 'Sản phẩm chủ lực của mảng kinh doanh tăng chiều cao: dự đoán chiều cao trưởng thành của trẻ từ dữ liệu tăng trưởng, rồi chuyển thành tư vấn cá nhân hóa. Cỗ máy tạo lead chính của công ty.',
-    stack: ['Next.js', 'NestJS', 'MongoDB', 'Prediction models'],
-  },
-  {
-    name: 'Trợ lý LLM trên Zalo',
-    role: 'Tech Lead',
-    desc: 'Trợ lý LLM trên kênh chat chính của công ty — OpenClaw agent gateway, RAG trên tri thức nội bộ, model fine-tuned. Câu hỏi của khách hàng được trả lời tự động ngay từ tuyến đầu.',
-    stack: ['OpenClaw', 'RAG', 'Fine-tuned LLMs', 'NestJS'],
-  },
-  {
-    name: 'PRM — Nền tảng đối tác',
-    role: 'Tech Lead · team 8 người',
-    desc: 'Quản lý quan hệ đối tác: onboarding, theo dõi đơn hàng & doanh thu, quy trình hoa hồng. Dẫn dắt trọn vẹn từ kiến trúc đến vận hành production.',
-    stack: ['Next.js', 'TypeScript', 'NestJS', 'MongoDB'],
-  },
-  {
-    name: 'Customer Data Platform',
-    role: 'Architect / Owner',
-    desc: 'Hợp nhất dữ liệu khách hàng và đơn hàng từ mọi kênh bán về một nền tảng duy nhất phục vụ marketing automation — nạp dữ liệu bằng các pipeline crawl tự động.',
-    stack: ['NestJS', 'MongoDB', 'Puppeteer', 'Playwright'],
-  },
-  {
-    name: 'Platform Services — SSO & Storage',
-    role: 'Architect / Owner',
-    desc: 'Single sign-on tập trung và dịch vụ lưu trữ cloud nội bộ — hai nền móng dùng chung cho 100% sản phẩm của công ty.',
-    stack: ['NestJS', 'JWT', 'Nginx', 'MongoDB'],
-  },
-  {
-    name: 'Quy trình engineering AI-native',
-    role: 'Head of Technology',
-    desc: 'Claude Code là quy trình chuẩn của team, với các skill plugin đóng gói design system và coding standards. Thay đổi giúp giảm team từ 12 xuống 7 mà đầu ra vẫn gấp đôi.',
-    stack: ['Claude Code', 'Custom skills', 'CI/CD', 'Code review'],
-  },
+  { id: 'ddcc', name: 'DDCC — Dự đoán chiều cao', role: 'Tech Lead',
+    summary: 'Sản phẩm tiêu dùng mảng tăng chiều cao: biến dữ liệu tăng trưởng thành tư vấn cá nhân hóa — cỗ máy tạo lead chính.' },
+  { id: 'zalo-llm', name: 'Trợ lý LLM trên Zalo', role: 'Tech Lead',
+    summary: 'Trợ lý LLM trên kênh chat chính của công ty — agent gateway với RAG trên tri thức nội bộ và model fine-tuned.' },
+  { id: 'prm', name: 'PRM — Nền tảng đối tác', role: 'Tech Lead · team 8 người',
+    summary: 'Nền tảng đối tác event-driven — onboarding, đơn hàng và hoa hồng, dẫn dắt trọn từ kiến trúc đến production.' },
+  { id: 'cdp', name: 'Customer Data Platform', role: 'Architect / Owner',
+    summary: 'Hợp nhất dữ liệu khách hàng và đơn hàng từ mọi kênh bán về một nền tảng, nạp bằng các pipeline crawl tự động.' },
+  { id: 'platform', name: 'Platform Services — SSO & Storage', role: 'Architect / Owner',
+    summary: 'Single sign-on tập trung và dịch vụ lưu trữ nội bộ — hai nền móng dùng chung cho mọi sản phẩm công ty.' },
+  { id: 'ai-workflow', name: 'Quy trình engineering AI-native', role: 'Trưởng phòng Công nghệ',
+    summary: 'Claude Code làm chuẩn của team với các skill plugin riêng — thay đổi giúp giảm team từ 12 xuống 7 mà đầu ra gấp đôi.' },
+  { id: 'documind', name: 'Documind — AI Document Intelligence', role: 'Builder',
+    summary: 'Nền tảng document-intelligence RAG, kết hợp vector search và knowledge graph trên OpenAI, chạy Next.js 15.' },
+  { id: 'capillary', name: 'Capillary Vision Analysis', role: 'Builder',
+    summary: 'Ứng dụng phân tích bằng LLM-vision, phản hồi token-streaming, đóng gói kèm Docker và Kubernetes.' },
 ]
+
+export const PROJECT_GROUP_LABELS = {
+  frontend: 'Frontend', backend: 'Backend', data: 'Dữ liệu', infra: 'Hạ tầng', patterns: 'Kỹ thuật',
+}
 
 export const SKILLS = [
   { group: 'Ngôn ngữ', items: ['TypeScript', 'JavaScript (Node.js)'] },

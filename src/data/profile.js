@@ -62,43 +62,27 @@ export const EXPERIENCE = [
 ]
 
 export const PROJECTS = [
-  {
-    name: 'DDCC — Height Prediction',
-    role: 'Tech Lead',
-    desc: 'Core consumer product of the height-growth business: predicts a child’s adult height from growth data and turns it into personalized consultation. Primary lead-generation engine.',
-    stack: ['Next.js', 'NestJS', 'MongoDB', 'Prediction models'],
-  },
-  {
-    name: 'Zalo LLM Assistant',
-    role: 'Tech Lead',
-    desc: 'LLM assistant on the company’s main chat channel — OpenClaw agent gateway, RAG over company knowledge, fine-tuned models. Frontline customer questions answered automatically.',
-    stack: ['OpenClaw', 'RAG', 'Fine-tuned LLMs', 'NestJS'],
-  },
-  {
-    name: 'PRM — Partner Platform',
-    role: 'Tech Lead · team of 8',
-    desc: 'Partner relationship management: onboarding, order & revenue tracking, commission workflows. Led end to end from architecture to production operation.',
-    stack: ['Next.js', 'TypeScript', 'NestJS', 'MongoDB'],
-  },
-  {
-    name: 'Customer Data Platform',
-    role: 'Architect / Owner',
-    desc: 'Consolidates customer and order data from every sales channel into one platform powering marketing automation — fed by automated crawling pipelines.',
-    stack: ['NestJS', 'MongoDB', 'Puppeteer', 'Playwright'],
-  },
-  {
-    name: 'Platform Services — SSO & Storage',
-    role: 'Architect / Owner',
-    desc: 'Centralized single sign-on and an internal cloud storage service — the two shared foundations used by 100% of company products.',
-    stack: ['NestJS', 'JWT', 'Nginx', 'MongoDB'],
-  },
-  {
-    name: 'AI-native Engineering Workflow',
-    role: 'Head of Technology',
-    desc: 'Claude Code as the team’s standard workflow, with custom skill plugins encoding the design system and coding standards. The change that cut the team from 12 to 7 while doubling output.',
-    stack: ['Claude Code', 'Custom skills', 'CI/CD', 'Code review'],
-  },
+  { id: 'ddcc', name: 'DDCC — Height Prediction', role: 'Tech Lead',
+    summary: 'Consumer height-growth product that turns growth data into a personalized consultation — the primary lead-generation engine.' },
+  { id: 'zalo-llm', name: 'Zalo LLM Assistant', role: 'Tech Lead',
+    summary: 'LLM assistant on the company’s main chat channel — an agent gateway with RAG over company knowledge and fine-tuned models.' },
+  { id: 'prm', name: 'PRM — Partner Platform', role: 'Tech Lead · team of 8',
+    summary: 'Event-driven partner platform — onboarding, orders and commission workflows, led end to end from architecture to production.' },
+  { id: 'cdp', name: 'Customer Data Platform', role: 'Architect / Owner',
+    summary: 'Consolidates customer and order data from every sales channel into one platform, fed by automated crawling pipelines.' },
+  { id: 'platform', name: 'Platform Services — SSO & Storage', role: 'Architect / Owner',
+    summary: 'Centralized single sign-on and an internal storage service — the two shared foundations used by every company product.' },
+  { id: 'ai-workflow', name: 'AI-native Engineering Workflow', role: 'Head of Technology',
+    summary: 'Claude Code as the team standard with custom skill plugins — the change that cut the team from 12 to 7 while doubling output.' },
+  { id: 'documind', name: 'Documind — AI Document Intelligence', role: 'Builder',
+    summary: 'RAG document-intelligence platform combining vector search and a knowledge graph over OpenAI, on Next.js 15.' },
+  { id: 'capillary', name: 'Capillary Vision Analysis', role: 'Builder',
+    summary: 'LLM-vision analysis app with token-streamed responses, shipped with Docker and Kubernetes manifests.' },
 ]
+
+export const PROJECT_GROUP_LABELS = {
+  frontend: 'Frontend', backend: 'Backend', data: 'Data', infra: 'Infra', patterns: 'Patterns',
+}
 
 export const SKILLS = [
   { group: 'Languages', items: ['TypeScript', 'JavaScript (Node.js)'] },
