@@ -128,13 +128,13 @@ export const PROJECTS = [
   },
   {
     id: 'ddcc', name: 'DDCC — Funnel dự đoán chiều cao', role: 'Tech Lead',
-    summary: 'Zalo Mini App ước lượng chiều cao trưởng thành của trẻ và biến kết quả thành lead bán hàng.',
+    summary: 'App web Next.js ước lượng chiều cao trưởng thành của trẻ và biến kết quả thành lead bán hàng.',
     problem: 'Ước lượng chiều cao trưởng thành của trẻ từ dữ liệu tăng trưởng thưa, rồi biến chính con số đó thành cơ chế tạo lead chính của sản phẩm — giá trị kinh doanh nằm ở funnel, không phải con số.',
     highlights: [
       'Bộ ước lượng minh bạch, có thể bảo vệ — cố ý không ML: tìm kênh percentile tăng trưởng WHO trẻ đang bám, đọc giá trị kênh đó ở tuổi 20, trộn 77% giá trị đó với 23% công thức chiều cao trung bình bố mẹ, rồi phạt cố định mỗi câu lifestyle thiếu. Công thức giải thích được thắng hộp đen không biện minh nổi với phụ huynh.',
       'Rescale đường cong tăng trưởng: hình dạng đường chuẩn WHO được rescale tuyến tính giữa “hiện tại” và tuổi 20 để khớp tổng tăng trưởng dự đoán của cá nhân, tạo biểu đồ cho phụ huynh.',
       'Funnel chính là kiến trúc: app công khai không bao giờ hiện con số — chỉ mã phác đồ — và buộc liên hệ nhân viên giới thiệu để mở. Các cờ hasResult / hasConsult / hasCourse trên bản ghi là state machine của funnel.',
-      'Một backend Express/Mongo, hai frontend, một funnel: quiz Zalo Mini App công khai (guest capture không cần auth để giảm ma sát) và app CRM React Native cho staff (phát hành CodePush theo giai đoạn) cùng chạy trên một state machine.',
+      'Một backend Express/Mongo sau ba frontend độc lập — app web Next.js này (vừa là quiz funnel công khai vừa là CRM cho staff), một Zalo Mini App, và một app React Native (CodePush) — tất cả chạy trên cùng một state machine funnel.',
       'Vận hành production: bảng giai đoạn dậy thì theo giới tính, engine gợi ý sản phẩm, thanh toán Sepay và môi trường dev/staging/uat tách bạch.',
     ],
   },

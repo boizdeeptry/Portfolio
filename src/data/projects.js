@@ -61,13 +61,13 @@ export const PROJECTS = [
   },
   {
     id: 'ddcc',
-    repo: 'ddcc-mini',
-    stack: ['Zalo Mini App', 'Express', 'MongoDB'],
+    repo: 'ddcc-website',
+    stack: ['Next.js', 'Express', 'MongoDB'],
     skills: [
-      { group: 'frontend', items: ['Zalo Mini App (zmp-sdk)', 'React', 'Vite', 'Ant Design'] },
+      { group: 'frontend', items: ['Next.js 14 (Pages Router)', 'React 18', 'Ant Design', 'Recoil'] },
       { group: 'backend', items: ['Express', 'Mongoose'] },
       { group: 'data', items: ['MongoDB', 'WHO growth-standard table'] },
-      { group: 'patterns', items: ['Percentile + parental-height formula', 'Result-gated lead funnel', 'Shared backend, two frontends'] },
+      { group: 'patterns', items: ['Percentile + parental-height formula', 'Result-gated lead funnel', 'Shared backend, three frontends'] },
     ],
   },
   {

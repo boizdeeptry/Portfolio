@@ -128,13 +128,13 @@ export const PROJECTS = [
   },
   {
     id: 'ddcc', name: 'DDCC — Height-Prediction Lead Funnel', role: 'Tech Lead',
-    summary: 'A Zalo Mini App that estimates a child’s adult height and turns the result into a sales lead.',
+    summary: 'A Next.js web app that estimates a child’s adult height and turns the result into a sales lead.',
     problem: 'Estimate a child’s adult height from sparse growth inputs, then engineer the estimate itself into the product’s primary lead-generation mechanism — the business value is the funnel, not the number.',
     highlights: [
       'A transparent, defensible estimator — deliberately not ML: it finds which WHO growth-percentile channel the child currently tracks, reads that channel’s value at age 20, blends 77% of it with 23% of the mid-parental-height formula, then applies a fixed per-missing-lifestyle-answer penalty. An explainable formula beats a black box you can’t justify to a parent.',
       'Growth-curve rescaling: the WHO standard curve shape is linearly rescaled between “now” and age 20 to fit the individual’s predicted total growth, producing the chart shown to the parent.',
       'The funnel is the architecture: the public app never shows the number — only a protocol code — and requires contacting the referring salesperson to unlock it. hasResult / hasConsult / hasCourse flags on the record are the funnel’s state machine.',
-      'One Express/Mongo backend, two frontends, one funnel: a public Zalo Mini App quiz (no-auth guest capture to cut friction) and a React Native staff CRM (CodePush staged releases) both drive the same state machine.',
+      'One Express/Mongo backend behind three independent frontends — this Next.js web app (both the public quiz funnel and the staff CRM), a Zalo Mini App, and a React Native app (CodePush) — all driving the same funnel state machine.',
       'Production ops: gender-specific puberty-stage tables, a product-suggestion engine, Sepay payments and staged dev/staging/uat environments.',
     ],
   },
