@@ -26,10 +26,14 @@ export function resolveGroupLabel(key, labels) {
   return label
 }
 
-/** Text lines for the modal body: summary, blank, then "Label   a · b · c". */
+/** Text lines for the modal body: the hard problem, a blank line, bulleted
+ *  highlights, a blank line, then "Label   a · b · c" skill rows. */
 export function projectToLines(project, labels) {
   const lines = []
-  if (project.summary) lines.push(project.summary, '')
+  if (project.problem) lines.push(project.problem, '')
+  const highlights = project.highlights ?? []
+  for (const h of highlights) lines.push(`• ${h}`)
+  if (highlights.length) lines.push('')
   for (const { group, items } of project.skills ?? []) {
     lines.push(`${resolveGroupLabel(group, labels).padEnd(10)} ${items.join(' · ')}`)
   }

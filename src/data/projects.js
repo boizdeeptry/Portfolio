@@ -1,25 +1,30 @@
 // Language-neutral project cores — the single source of truth for tech/skills.
-// Localized name/role/summary live in profile.js / profile.vi.js, merged by id.
+// Localized name/role/summary/problem/highlights live in profile.js /
+// profile.vi.js, merged by id. Tech tags here are verified against source;
+// dead/scaffolded deps (unused queues, template CI, etc.) are deliberately omitted.
 
 export const PROJECTS = [
   {
-    id: 'ddcc',
-    repo: 'ddcc-website', // verify: height-prediction product repo (see plan risk note)
-    stack: ['Next.js', 'NestJS', 'MongoDB'],
+    id: 'documind',
+    repo: 'documind',
+    stack: ['Next.js', 'Qdrant', 'Neo4j', 'OpenAI'],
     skills: [
-      { group: 'frontend', items: ['Next.js', 'React', 'SSR'] },
-      { group: 'backend', items: ['NestJS', 'REST API', 'Prediction models'] },
-      { group: 'data', items: ['MongoDB'] },
-      { group: 'patterns', items: ['Lead-gen funnel', 'Personalized consultation flow'] },
+      { group: 'frontend', items: ['Next.js 15', 'React 19', 'Cytoscape.js'] },
+      { group: 'backend', items: ['LangChain (PDF parsing)', 'OpenAI embeddings', 'LLM generation'] },
+      { group: 'data', items: ['Qdrant (vectors)', 'Neo4j (graph)', 'MongoDB'] },
+      { group: 'patterns', items: ['RAG', 'Hybrid vector + graph retrieval', 'Cross-document entity resolution', 'JWT auth'] },
     ],
   },
   {
-    id: 'zalo-llm',
-    repo: null, // hand-curated: OpenClaw gateway + RAG, no single repo
-    stack: ['NestJS', 'RAG', 'Fine-tuned LLMs'],
+    id: 'capillary',
+    repo: 'capillary-analysis',
+    stack: ['Next.js', 'GPT-4o Vision', 'tiktoken'],
     skills: [
-      { group: 'backend', items: ['NestJS', 'OpenClaw agent gateway'] },
-      { group: 'patterns', items: ['RAG pipeline', 'Fine-tuned LLMs', 'Zalo channel integration'] },
+      { group: 'frontend', items: ['Next.js', 'i18n'] },
+      { group: 'backend', items: ['GPT-4o Vision', 'SSE streaming', 'tiktoken'] },
+      { group: 'data', items: ['ImageKit CDN'] },
+      { group: 'infra', items: ['Docker'] },
+      { group: 'patterns', items: ['Prompt engineering', 'Token budgeting', 'CDN-URL image strategy'] },
     ],
   },
   {
@@ -27,62 +32,59 @@ export const PROJECTS = [
     repo: 'prm',
     stack: ['Next.js', 'Express', 'MongoDB'],
     skills: [
-      { group: 'frontend', items: ['Next.js', 'Ant Design', 'Apollo GraphQL'] },
-      { group: 'backend', items: ['Express', 'Socket.io', 'Swagger'] },
-      { group: 'data', items: ['MongoDB', 'MinIO object storage'] },
-      { group: 'infra', items: ['RabbitMQ', 'Docker'] },
-      { group: 'patterns', items: ['Event-driven queues', 'PDF & QR generation', 'Commission workflows'] },
+      { group: 'frontend', items: ['Next.js 14', 'Ant Design', 'Recoil', 'React Query'] },
+      { group: 'backend', items: ['Express', 'Socket.io', 'Firebase FCM'] },
+      { group: 'data', items: ['MongoDB'] },
+      { group: 'patterns', items: ['Multi-tier commission engine', 'Tax withholding', 'Payment IPN (VNPay)', 'Webhook ingestion (Shopee)'] },
     ],
   },
   {
     id: 'cdp',
-    repo: 'facebookcrawls',
-    stack: ['NestJS', 'Playwright', 'MongoDB'],
+    repo: 'dcm',
+    stack: ['Express', 'MongoDB', 'node-cron'],
     skills: [
-      { group: 'backend', items: ['NestJS', 'Express', 'JWT auth'] },
-      { group: 'data', items: ['MongoDB', 'Excel / CSV export'] },
-      { group: 'patterns', items: ['Playwright & Puppeteer crawling', 'Multi-channel consolidation', 'ETL pipelines'] },
+      { group: 'backend', items: ['Express', 'Socket.io', 'node-cron', 'Droppii REST API', 'Smax Messenger'] },
+      { group: 'data', items: ['MongoDB', 'ExcelJS'] },
+      { group: 'patterns', items: ['Cron per-tenant ingestion', 'Upsert identity resolution', 'Content-hash campaign dedup', 'MLM spillover model'] },
     ],
   },
   {
     id: 'platform',
     repo: 'midu-core-storage',
-    stack: ['NestJS', 'Express', 'MongoDB'],
+    stack: ['NestJS', 'Sharp', 'JWT'],
     skills: [
-      { group: 'backend', items: ['NestJS', 'Express', 'Sharp image processing'] },
+      { group: 'backend', items: ['NestJS', 'Express', 'Sharp', 'Passport-JWT'] },
       { group: 'data', items: ['MongoDB'] },
-      { group: 'infra', items: ['Docker', 'Nginx'] },
-      { group: 'patterns', items: ['Centralized SSO (JWT · argon2 · OAuth)', 'Shared storage service', 'Structured logging (pino)'] },
+      { group: 'infra', items: ['Docker', 'PM2'] },
+      { group: 'patterns', items: ['Shared M2M storage', 'JWT access + refresh (hashed)', 'Structured logging (pino)'] },
+    ],
+  },
+  {
+    id: 'ddcc',
+    repo: 'ddcc-mini',
+    stack: ['Zalo Mini App', 'Express', 'MongoDB'],
+    skills: [
+      { group: 'frontend', items: ['Zalo Mini App (zmp-sdk)', 'React', 'Vite', 'Ant Design'] },
+      { group: 'backend', items: ['Express', 'Mongoose'] },
+      { group: 'data', items: ['MongoDB', 'WHO growth-standard table'] },
+      { group: 'patterns', items: ['Percentile + parental-height formula', 'Result-gated lead funnel', 'Shared backend, two frontends'] },
+    ],
+  },
+  {
+    id: 'zalo-llm',
+    repo: null, // described from experience — no single public repo
+    stack: ['NestJS', 'RAG', 'Fine-tuned LLMs'],
+    skills: [
+      { group: 'backend', items: ['NestJS', 'OpenClaw agent gateway'] },
+      { group: 'patterns', items: ['RAG pipeline', 'Fine-tuned LLMs', 'Zalo channel integration'] },
     ],
   },
   {
     id: 'ai-workflow',
-    repo: null, // hand-curated: process, not a product repo
+    repo: null, // described from experience — process, not a product repo
     stack: ['Claude Code', 'CI/CD', 'Code review'],
     skills: [
       { group: 'patterns', items: ['Claude Code as team standard', 'Custom skill plugins', 'Encoded design system & standards', 'AI-native code review'] },
-    ],
-  },
-  {
-    id: 'documind',
-    repo: 'documind',
-    stack: ['Next.js', 'LangChain', 'OpenAI'],
-    skills: [
-      { group: 'frontend', items: ['Next.js 15', 'React'] },
-      { group: 'backend', items: ['LangChain', 'OpenAI', 'Background processing'] },
-      { group: 'data', items: ['Qdrant (vectors)', 'Neo4j (graph)', 'MongoDB'] },
-      { group: 'patterns', items: ['RAG', 'Dual vector + graph retrieval', 'Semantic search', 'Auth (Clerk)'] },
-    ],
-  },
-  {
-    id: 'capillary',
-    repo: 'capillary-analysis',
-    stack: ['Next.js', 'OpenAI Vision', 'Kubernetes'],
-    skills: [
-      { group: 'frontend', items: ['Next.js', 'i18n'] },
-      { group: 'backend', items: ['OpenAI Vision', 'LLM streaming', 'tiktoken'] },
-      { group: 'infra', items: ['Docker', 'Kubernetes', 'GitLab CI'] },
-      { group: 'patterns', items: ['Token-streamed responses', 'Vitest coverage'] },
     ],
   },
 ]

@@ -18,11 +18,11 @@ assert.equal(mergeProjects([{ id: 'ghost', name: 'G' }], cores).length, 0)
 assert.equal(resolveGroupLabel('frontend', { frontend: 'Frontend' }), 'Frontend')
 assert.equal(resolveGroupLabel('nope', { frontend: 'Frontend' }), 'nope')
 
-// projectToLines: summary first, blank line, then "Label items"
+// projectToLines: problem, blank, • highlights, blank, then "Label items"
 const lines = projectToLines(
-  { summary: 'S', skills: [{ group: 'frontend', items: ['Next.js', 'React'] }] },
+  { problem: 'P', highlights: ['h1', 'h2'], skills: [{ group: 'frontend', items: ['Next.js', 'React'] }] },
   { frontend: 'Frontend' },
 )
-assert.deepEqual(lines, ['S', '', 'Frontend   Next.js · React'])
+assert.deepEqual(lines, ['P', '', '• h1', '• h2', '', 'Frontend   Next.js · React'])
 
 console.log('project-merge: all assertions passed')

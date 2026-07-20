@@ -5,9 +5,9 @@ const labels = { frontend: 'Frontend' }
 // consistent -> no errors
 assert.deepEqual(
   validate(
-    [{ id: 'a', skills: [{ group: 'frontend', items: ['X'] }] }],       // cores
-    [{ id: 'a', name: 'A', summary: 'sa' }],                            // en
-    [{ id: 'a', name: 'Ạ', summary: 'sạ' }],                            // vi
+    [{ id: 'a', skills: [{ group: 'frontend', items: ['X'] }] }],                      // cores
+    [{ id: 'a', name: 'A', summary: 'sa', problem: 'pa', highlights: ['h'] }],          // en
+    [{ id: 'a', name: 'Ạ', summary: 'sạ', problem: 'pạ', highlights: ['h'] }],          // vi
     labels, labels,
   ),
   [],

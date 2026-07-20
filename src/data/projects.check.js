@@ -23,6 +23,8 @@ export function validate(cores, en, vi, enLabels, viLabels) {
     for (const p of list) {
       if (!p.name) errors.push(`${loc} overlay "${p.id}" missing name`)
       if (!p.summary) errors.push(`${loc} overlay "${p.id}" missing summary`)
+      if (!p.problem) errors.push(`${loc} overlay "${p.id}" missing problem`)
+      if (!p.highlights?.length) errors.push(`${loc} overlay "${p.id}" missing highlights`)
     }
   }
   return errors
