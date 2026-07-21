@@ -168,10 +168,12 @@ export const PROJECTS = [
     summary: 'Making AI a first-class part of how the team writes code — the change that cut the team from 12 to 7.',
     problem: 'Make a small team outship a big one by putting AI into the team’s actual workflow — not as a novelty, but as the standard way code gets written, reviewed and shipped.',
     highlights: [
-      'Claude Code adopted as the team’s standard workflow, not an individual experiment',
-      'Custom skill plugins encoding the design system and coding standards, so AI output already matches in-house conventions instead of needing rework — the leverage is in removing the review-and-redo loop',
-      'Result: the team went from 12 to 7 while roughly doubling delivery throughput',
-      'Described from experience — no public repo',
+      'A shared Claude Code configuration — 37 skills, 18 slash-commands, 16 agents and 4 hooks — codifying a /new-project → /discuss → /plan → /execute → /ship pipeline the whole team runs.',
+      'Company coding standards became skills: the team’s TypeScript/Go rule sets are packaged so generated code follows them by default — a traceable line from the global rules into the installable plugin.',
+      'The design system shipped as a versioned, CI-gated Claude Code plugin (marketplace-installable): brand tokens + AI-readable non-negotiables, so any teammate’s AI output is on-brand without reading a style doc.',
+      'Standards enforced automatically, not on request: a SessionStart hook injects the brand non-negotiables, a PostToolUse hook re-scans every edit for specific regressions (a font with no Vietnamese diacritics, outline:none with no :focus-visible), and a midu-brand-review agent gates output on a Blocker/Major/Minor checklist.',
+      'Multi-agent execution: subagent-driven development with two-stage review (spec-compliance → code-quality) and a bead-orchestrator running parallel work tracks over agent-mail.',
+      'The outcome I’m accountable for: the team went from 12 to 7 while roughly doubling delivery throughput.',
     ],
   },
 ]

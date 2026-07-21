@@ -168,10 +168,12 @@ export const PROJECTS = [
     summary: 'Đưa AI thành phần cốt lõi trong cách team viết code — thay đổi giúp giảm team từ 12 xuống 7.',
     problem: 'Cho một đội nhỏ ship nhiều hơn đội lớn bằng cách đưa AI vào quy trình thật của team — không phải thứ mới lạ, mà là cách chuẩn để code được viết, review và ship.',
     highlights: [
-      'Claude Code thành quy trình chuẩn của team, không phải thử nghiệm cá nhân',
-      'Skill plugin riêng đóng gói design system và coding standards, nên output AI đã khớp quy ước nội bộ thay vì phải làm lại — đòn bẩy nằm ở việc bỏ vòng lặp review-và-sửa',
-      'Kết quả: team từ 12 xuống 7 mà sản lượng gần gấp đôi',
-      'Mô tả từ kinh nghiệm — không có repo công khai',
+      'Một bộ cấu hình Claude Code dùng chung — 37 skill, 18 slash-command, 16 agent và 4 hook — mã hóa pipeline /new-project → /discuss → /plan → /execute → /ship cho cả team.',
+      'Chuẩn code của công ty thành skill: bộ rule TypeScript/Go được đóng gói để code AI sinh ra bám chuẩn mặc định — có đường truy vết từ global rules vào plugin cài được.',
+      'Design system ship dưới dạng plugin Claude Code có version, có CI (cài qua marketplace): brand token + non-negotiable đọc-được-bằng-AI, để output của bất kỳ ai trong team đều đúng brand mà không cần đọc style doc.',
+      'Chuẩn được cưỡng chế tự động, không đợi yêu cầu: hook SessionStart bơm non-negotiable brand vào context, hook PostToolUse quét lại mỗi edit tìm regression cụ thể (font không dấu tiếng Việt, outline:none mà thiếu :focus-visible), và agent midu-brand-review chặn output theo checklist Blocker/Major/Minor.',
+      'Thực thi đa agent: subagent-driven development với review 2 tầng (spec-compliance → code-quality) và bead-orchestrator chạy nhiều track song song qua agent-mail.',
+      'Kết quả tôi chịu trách nhiệm: team từ 12 xuống 7 mà sản lượng gần gấp đôi.',
     ],
   },
 ]

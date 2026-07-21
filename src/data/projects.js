@@ -92,10 +92,11 @@ export const PROJECTS = [
   },
   {
     id: 'ai-workflow',
-    repo: null, // described from experience — process, not a product repo
-    stack: ['Claude Code', 'CI/CD', 'Code review'],
+    repo: 'claude-skills',
+    stack: ['Claude Code', 'Plugins & Hooks', 'CI'],
     skills: [
-      { group: 'patterns', items: ['Claude Code as team standard', 'Custom skill plugins', 'Encoded design system & standards', 'AI-native code review'] },
+      { group: 'infra', items: ['Claude Code plugin marketplace', 'GitHub Actions CI', 'Git hooks'] },
+      { group: 'patterns', items: ['Coding standards as skills', 'Design-system-as-plugin', 'Brand-compliance review agent', 'Guard hooks (SessionStart / PostToolUse)', 'Subagent-driven two-stage review', 'discuss → plan → execute → ship pipeline'] },
     ],
   },
 ]
