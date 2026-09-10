@@ -31,7 +31,7 @@ export const TERMINAL = {
     systems: [
       '# systems/  (12 in production — highlights)',
       '- DDCC        child height prediction — core consumer product',
-      '- zalo-llm    LLM assistant — OpenClaw · RAG · fine-tuned models',
+      '- academy     course platform — signed HLS · server-verified watch time',
       '- PRM         partner platform — orders, revenue, commissions',
       '- CDP         customer data platform — every sales channel, one store',
       '- sso+storage shared platform foundations, used by 100% of products',
@@ -41,6 +41,7 @@ export const TERMINAL = {
       'Most teams add AI. We rebuilt the team around it.',
       '- Claude Code as the standard engineering workflow',
       '- custom skill plugins encode our design system + coding standards',
+      '- agentdc: a Go daemon driving Claude/Codex/OpenCode in real PTYs',
       '- LLM/RAG shipped straight to the Zalo customer channel',
       '# result: 12 → 7 engineers · ~2× delivery throughput',
     ],
