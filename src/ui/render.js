@@ -6,11 +6,21 @@ import { mergeProjects } from '../data/project-merge.js'
 
 const html = (strings, ...values) => strings.reduce((out, s, i) => out + s + (values[i] ?? ''), '')
 
-/** Pure: one project card's HTML. Card is a <button> so it is keyboard-focusable. */
-export function projectCardHTML(p) {
+/** Pure: one project card's HTML. Card is a <button> so it is keyboard-focusable.
+ *  The badge only *signals* live-vs-private — the clickable link lives in the
+ *  modal, because an <a> nested inside a <button> is invalid and unfocusable. */
+export function projectCardHTML(p, labels = {}) {
+  const live = Boolean(p.url)
+  const badge = live ? (labels.live ?? 'Live') : (labels.private ?? 'Private')
   return html`
     <button type="button" class="project-card" data-project-id="${p.id}" data-reveal>
-      <div class="project-top"><h3>${p.name}</h3><span class="mono project-role">${p.role}</span></div>
+      <div class="project-top">
+        <div class="project-head">
+          <h3>${p.name}</h3>
+          <span class="mono project-badge ${live ? 'is-live' : 'is-private'}">${badge}</span>
+        </div>
+        <span class="mono project-role">${p.role}</span>
+      </div>
       <p>${p.summary}</p>
       <div class="project-stack">${p.stack.map((t) => `<span class="tag mono">${t}</span>`).join('')}</div>
     </button>`
@@ -20,7 +30,7 @@ export function projectCardHTML(p) {
 export function renderContent() {
   // Language is declared by the page (<html lang>) — one bundle serves both.
   const locale = document.documentElement.lang === 'vi' ? vi : en
-  const { CONTACT, EXPERIENCE, SKILLS, PROJECT_GROUP_LABELS } = locale
+  const { CONTACT, EXPERIENCE, SKILLS, PROJECT_GROUP_LABELS, PROJECT_LINK } = locale
 
   document.getElementById('timelineItems').innerHTML = EXPERIENCE.map(
     (job) => html`
@@ -53,7 +63,7 @@ export function renderContent() {
   const projectsById = new Map(projects.map((p) => [p.id, p]))
 
   const grid = document.getElementById('projectsGrid')
-  grid.innerHTML = projects.map(projectCardHTML).join('')
+  grid.innerHTML = projects.map((p) => projectCardHTML(p, PROJECT_LINK)).join('')
   // Delegated open — cards are buttons, so Enter/Space fire click natively.
   // Lazy-import keeps gsap/lenis out of the initial bundle until first open.
   grid.addEventListener('click', async (e) => {
@@ -63,7 +73,7 @@ export function renderContent() {
     if (!project) return
     try {
       const { openProject } = await import('./ProjectModal.js')
-      openProject(project, PROJECT_GROUP_LABELS)
+      openProject(project, PROJECT_GROUP_LABELS, PROJECT_LINK)
     } catch (err) {
       console.error('failed to open project modal', err)
     }

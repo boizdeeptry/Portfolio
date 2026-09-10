@@ -15,6 +15,12 @@ export function validate(cores, en, vi, enLabels, viLabels) {
     for (const s of core.skills ?? []) {
       if (!groups.has(s.group)) errors.push(`core "${core.id}" uses unknown group "${s.group}"`)
     }
+    // url must be an explicit decision: a live https URL, or null for Private.
+    // undefined would silently render the Private badge without anyone choosing it.
+    if (!('url' in core)) errors.push(`core "${core.id}" is missing url (use null for Private)`)
+    else if (core.url !== null && !/^https:\/\/\S+$/.test(core.url)) {
+      errors.push(`core "${core.id}" has a non-https url: ${core.url}`)
+    }
   }
   for (const key of Object.keys(enLabels)) {
     if (!(key in viLabels)) errors.push(`VI_LABELS missing "${key}"`)

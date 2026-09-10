@@ -7,12 +7,27 @@ import { projectToLines } from '../data/project-merge.js'
 
 let current = null // { overlay, trigger, ctrl }
 
+/** The live-site link, or a muted note when the product has no public URL.
+ *  Lives here rather than on the card because the card is a <button>. */
+function linkRow(project, linkLabels = {}) {
+  if (!project.url) {
+    return el('span', { class: 'mono pjm__link pjm__link--none' },
+      linkLabels.none ?? 'Private — no public URL')
+  }
+  const host = project.url.replace(/^https?:\/\//, '').replace(/\/$/, '')
+  return el('a', {
+    class: 'mono pjm__link', href: project.url, target: '_blank', rel: 'noreferrer',
+    title: linkLabels.visit ?? 'Open the live site',
+  }, `${host} ↗`)
+}
+
 /** Open the terminal modal for a merged project. Closes any open one first. */
-export function openProject(project, labels) {
+export function openProject(project, labels, linkLabels) {
   closeProject()
   const trigger = document.activeElement
   const repo = project.repo ?? project.id
   const out = el('pre', { class: 'pjm__out' })
+  const foot = el('div', { class: 'pjm__foot' }, linkRow(project, linkLabels))
 
   const win = el('div', { class: 'term__win pjm__win' },
     el('div', { class: 'term__bar' },
@@ -22,7 +37,7 @@ export function openProject(project, labels) {
         el('span', { class: 'term__light is-green' })),
       el('div', { class: 'term__title' }, `boizdeeptry@portfolio — ${project.name}`),
       el('button', { type: 'button', class: 'term__enter pjm__close', 'aria-label': 'close' }, 'esc')),
-    el('div', { class: 'term__body' }, out))
+    el('div', { class: 'term__body' }, out, foot))
 
   const overlay = el('div', {
     class: 'term pjm', 'data-lenis-prevent': '', role: 'dialog', 'aria-modal': 'true',

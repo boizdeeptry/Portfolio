@@ -7,6 +7,7 @@ export const PROJECTS = [
   {
     id: 'agentdc',
     repo: 'agentdc',
+    url: 'https://agentdc.nqdiepoii.com/',
     stack: ['Go', 'ConPTY / PTY', 'SQLite', 'MCP'],
     skills: [
       { group: 'backend', items: ['Go 1.26', 'net/http ServeMux (1.22 method patterns)', 'cobra CLI', 'coder/websocket relay', 'MCP Go SDK over Streamable HTTP', 'ConPTY (Windows)', 'creack/pty (Linux)', 'golang.org/x/term', 'Windows Job Objects', 'POSIX process groups + signals', 'context-scoped cancellation', 'go:embed'] },
@@ -19,6 +20,7 @@ export const PROJECTS = [
   {
     id: 'documind',
     repo: 'documind',
+    url: null,
     stack: ['Next.js', 'Qdrant', 'Neo4j', 'OpenAI'],
     skills: [
       { group: 'frontend', items: ['Next.js 15 (App Router)', 'React 19', 'TypeScript', 'Tailwind', 'Radix UI primitives', 'Cytoscape.js + cose-bilkent layout', 'react-dropzone uploads', 'react-markdown + remark-gfm', 'Streaming chat UI'] },
@@ -31,6 +33,7 @@ export const PROJECTS = [
   {
     id: 'academy',
     repo: 'training-platform',
+    url: 'https://training.midu.vn',
     stack: ['NestJS', 'React', 'Bunny Stream', 'MongoDB'],
     skills: [
       { group: 'frontend', items: ['React 18 + TypeScript', 'Vite 5', 'Tailwind', 'TanStack Query', 'Zustand', 'hls.js over MediaSource', 'tus-js-client (resumable direct upload)', 'dnd-kit (chapter/lesson ordering)', 'react-rnd (certificate design canvas)', 'Recharts', 'react-quill'] },
@@ -43,6 +46,7 @@ export const PROJECTS = [
   {
     id: 'capillary',
     repo: 'capillary-analysis',
+    url: null,
     stack: ['Next.js', 'GPT-4o Vision', 'tiktoken'],
     skills: [
       { group: 'frontend', items: ['Next.js (Pages Router)', 'React', 'TypeScript', 'Tailwind', 'react-markdown', 'remark-math + rehype-mathjax', 'react-syntax-highlighter', 'React Query', 'next-i18next (multi-locale)', 'Responsive + mobile shell'] },
@@ -55,6 +59,7 @@ export const PROJECTS = [
   {
     id: 'prm',
     repo: 'prm',
+    url: null,
     stack: ['Next.js', 'Express', 'MongoDB'],
     skills: [
       { group: 'frontend', items: ['Next.js 14', 'React', 'Ant Design + @ant-design/plots', 'Recoil', 'React Query', 'socket.io-client', 'react-window + virtualizedtableforantd4', 'dnd-kit ordering', 'Quill / react-rte editors', 'Recharts', 'jsbarcode', 'react-to-print + html2canvas', 'next-i18next', 'React Native app (Expo Router)', 'gluestack-ui + NativeWind', 'Zustand + react-hook-form', 'Reanimated', 'expo-updates OTA'] },
@@ -67,6 +72,7 @@ export const PROJECTS = [
   {
     id: 'cdp',
     repo: 'dcm',
+    url: null,
     stack: ['Express', 'MongoDB', 'node-cron'],
     skills: [
       { group: 'backend', items: ['Express (27 route/controller pairs)', 'Mongoose', 'Socket.io', 'node-cron', 'JWT + bcrypt', 'helmet + compression', 'i18n', 'fluent-ffmpeg + ffprobe', 'iconv-lite (legacy encodings)', 'Droppii REST API client', 'Smax Messenger integration'] },
@@ -78,6 +84,7 @@ export const PROJECTS = [
   {
     id: 'platform',
     repo: 'midu-auth-architecture',
+    url: null,
     stack: ['NestJS', 'Express', 'MongoDB'],
     skills: [
       { group: 'backend', items: ['NestJS auth-service', 'Passport-JWT + @nestjs/jwt', '@nestjs/throttler', 'class-validator + class-transformer', 'Swagger', 'nodemailer (email verification)', 'SMS verification', 'helmet + cookie-parser', 'Express + TypeScript storage service', 'joi + envalid config validation', 'Sharp image re-encoding', 'multer', 'Pusher'] },
@@ -90,6 +97,7 @@ export const PROJECTS = [
   {
     id: 'ddcc',
     repo: 'ddcc-website',
+    url: 'https://ddcc.vn/',
     stack: ['Next.js', 'Express', 'MongoDB'],
     skills: [
       { group: 'frontend', items: ['Next.js (Pages Router)', 'React 18', 'Ant Design', 'Recoil', 'React Query', 'Apollo Client + graphql-ws', 'Highcharts', '@tanstack/react-table', 'Dexie (IndexedDB cache)', 'react-beautiful-dnd', 'Quill editor', 'jsPDF + html2canvas', 'qrcode', 'next-i18next'] },
@@ -102,6 +110,7 @@ export const PROJECTS = [
   {
     id: 'xwealth',
     repo: 'x-wealth',
+    url: 'https://xwealth.datx.vn/',
     stack: ['Next.js', 'GraphQL', 'Highcharts'],
     skills: [
       { group: 'frontend', items: ['Next.js 13', 'React 18', 'TypeScript', 'Ant Design', 'Tailwind + twin.macro', 'styled-components', '311 components', 'virtualizedtableforantd4 (virtualised tables)', 'react-window-style infinite scroll', 'react-intersection-observer', 'Loading skeletons', 'next-i18next'] },
@@ -114,6 +123,7 @@ export const PROJECTS = [
   {
     id: 'matching',
     repo: null, // client-owned repo — described from experience
+    url: null,
     stack: ['Next.js', 'AWS AppSync', 'Cognito', 'GMO Payment'],
     skills: [
       { group: 'frontend', items: ['Next.js project foundation', 'React', 'TypeScript', 'Ant Design', 'Shared layout + routing conventions', 'Responsive across devices', 'GraphQL client integration', 'Realtime subscription UI'] },
@@ -125,6 +135,7 @@ export const PROJECTS = [
   {
     id: 'datx-admin',
     repo: null, // company-owned repo — described from experience
+    url: null,
     stack: ['React', 'Express', 'MongoDB', 'PostgreSQL'],
     skills: [
       { group: 'frontend', items: ['React', 'TypeScript', 'Material UI', 'Tailwind CSS', 'Redux', 'Recoil', 'Responsive admin surfaces', 'Dense data tables and forms'] },
@@ -136,6 +147,7 @@ export const PROJECTS = [
   {
     id: 'ai-workflow',
     repo: 'claude-skills',
+    url: null,
     stack: ['Claude Code', 'Plugins & Hooks', 'CI'],
     skills: [
       { group: 'infra', items: ['Claude Code plugin marketplace (marketplace.json)', 'Versioned, CI-gated design-system plugin', 'GitHub Actions CI on the plugin repo', 'hooks.json event wiring', 'Git hooks', 'Agent Mail coordination', 'Beads issue tracker (bd / bv)', 'Git worktree isolation per work track', 'Self-serve QUICKSTART + CHANGELOG discipline'] },

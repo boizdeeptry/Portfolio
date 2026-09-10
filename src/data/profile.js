@@ -218,6 +218,11 @@ export const PROJECTS = [
   },
 ]
 
+export const PROJECT_LINK = {
+  live: 'Live', private: 'Private',
+  visit: 'Open the live site', none: 'Private — no public URL',
+}
+
 export const PROJECT_GROUP_LABELS = {
   frontend: 'Frontend', backend: 'Backend', data: 'Data', infra: 'Infra', patterns: 'Patterns',
 }
