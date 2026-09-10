@@ -1,0 +1,17 @@
+{
+  "name": "Man Van Truong — Head of Technology",
+  "short_name": "MVT.",
+  "description": "Head of Technology at Midu Group. AI-native engineering: 12 production systems, LLM/RAG products, 2× delivery throughput with a 7-person team.",
+  "lang": "en",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#04060a",
+  "theme_color": "#04060a",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}
