@@ -121,6 +121,32 @@ export const PROJECTS = [
     ],
   },
   {
+    id: 'numerology',
+    repo: 'numerology',
+    url: null,
+    stack: ['NestJS', 'Next.js', 'MongoDB', 'SePay'],
+    skills: [
+      { group: 'frontend', items: ['Next.js', 'React', 'TypeScript', 'Tailwind', 'Radix UI primitives', '162 components', '@xyflow/react node graph', 'dnd-kit ordering', 'Recharts', 'react-day-picker', 'qrcode.react', 'Socket.io client', 'disable-devtool guard'] },
+      { group: 'backend', items: ['NestJS (85 routes, 21 controllers, 24 services)', '@nestjs/throttler', '@nestjs/schedule', 'WebSockets (socket.io)', 'Zod validation', 'nodemailer', 'cheerio', 'sharp', 'ImageKit signed upload'] },
+      { group: 'data', items: ['MongoDB', 'Unique index as webhook idempotency key', 'In-repo migrations', 'digit-meanings content pool'] },
+      { group: 'infra', items: ['SePay bank-transfer webhooks', 'VietQR payment codes', 'ConvertAPI (DOCX → PDF)', 'Smax messaging integration', 'Email verification flow', '1,166 tests across 97 spec files'] },
+      { group: 'patterns', items: ['Numerology engine — life path, destiny, soul urge, personal year, pinnacles, essence', '16-block report composition', 'Single source of truth across guest and logged-in flows', 'DOCX templating (docxtemplater + pizzip)', 'Generated report emailed as PDF', 'Webhook IP allowlist + constant-time key compare', 'Boot-time trust-proxy sanity check', 'Claim-once webhook processing', 'Affiliate and voucher pricing', 'Guest teaser → email verify → paid report funnel'] },
+    ],
+  },
+  {
+    id: 'loyalty',
+    repo: 'loyalty-website',
+    url: null,
+    stack: ['NestJS', 'React', 'MongoDB', 'VNPay'],
+    skills: [
+      { group: 'backend', items: ['NestJS 10 (110 routes, 16 controllers, 18 services)', 'Passport-JWT', '@nestjs/throttler', '@nestjs/websockets + socket.io', '@nestjs/schedule', 'class-validator', 'Swagger', 'helmet'] },
+      { group: 'frontend', items: ['React + Vite', 'TanStack Query', 'Zustand', 'react-router-dom', 'Tailwind', '55 components', 'ImageKit', 'Socket.io client'] },
+      { group: 'data', items: ['MongoDB / Mongoose', '16 schemas', 'Shared shops identity collection', 'Per-prize daily quantity ledger', 'Points transaction ledger'] },
+      { group: 'infra', items: ['VNPay HMAC-SHA512 signing', 'Shared SSO with the auth service', 'M2M public API behind x-api-key', 'PRM integration channel'] },
+      { group: 'patterns', items: ['Server-side prize draw — the client never picks', 'Absolute per-prize win rates', 'Residual probability split across unconfigured prizes', 'Runtime normalisation when rates exceed 100%', 'Daily per-prize quantity caps', 'Cumulative-probability selection', 'Graceful fallback when stock is exhausted', 'Points accumulation ledger', 'Gift exchange + prize fulfilment', 'Signed payment return-URL verification'] },
+    ],
+  },
+  {
     id: 'matching',
     repo: null, // client-owned repo — described from experience
     url: null,
