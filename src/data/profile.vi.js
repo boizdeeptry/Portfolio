@@ -256,13 +256,14 @@ export const PROJECT_GROUP_LABELS = {
 }
 
 export const SKILLS = [
-  { group: 'Ngôn ngữ', items: ['TypeScript', 'JavaScript (Node.js)', 'Go'] },
-  { group: 'Frontend', items: ['Next.js', 'React', 'Vite', 'Tailwind CSS', 'Ant Design', 'Redux / Recoil'] },
-  { group: 'Backend', items: ['NestJS', 'Express', 'REST', 'GraphQL', 'Prisma', 'Mongoose'] },
-  { group: 'Dữ liệu', items: ['MongoDB (replica sets)', 'PostgreSQL', 'MySQL', 'SQLite'] },
-  { group: 'AI & LLM', items: ['Tích hợp LLM', 'RAG pipelines', 'Fine-tuning', 'MCP (Model Context Protocol)', 'OpenClaw', 'Claude Code', 'Windsurf'] },
-  { group: 'Hạ tầng & DevOps', items: ['Docker', 'Nginx', 'PM2', 'GitLab CI/CD (self-hosted)', 'Linode / DigitalOcean'] },
-  { group: 'Lãnh đạo', items: ['Xây dựng đội ngũ', 'Agile/Scrum', 'Tuyển dụng & mentoring', 'Kho tri thức kỹ thuật'] },
+  { group: 'Ngôn ngữ', items: ['TypeScript', 'Go', 'Node.js'] },
+  { group: 'Kiến trúc', items: ['Hexagonal (ports & adapters)', 'Phân ranh theo domain', 'Polyglot persistence', 'Tích hợp webhook & thanh toán', 'Thiết kế state realtime'] },
+  { group: 'Frontend', items: ['Next.js', 'React', 'Recoil / Zustand', 'TanStack Query', 'Apollo Client'] },
+  { group: 'Backend', items: ['NestJS', 'Express', 'GraphQL', 'WebSockets (Socket.io)', 'JWT & SSO'] },
+  { group: 'Dữ liệu', items: ['MongoDB (replica sets)', 'PostgreSQL', 'Qdrant (vector)', 'Neo4j (graph)', 'SQLite'] },
+  { group: 'AI & LLM', items: ['RAG & GraphRAG', 'Fine-tuning', 'Prompt engineering', 'MCP (Model Context Protocol)', 'Thiết kế agent harness'] },
+  { group: 'Cloud & DevOps', items: ['Docker', 'Kubernetes', 'AWS (AppSync, Lambda, Cognito, CDK)', 'GitLab CI/CD', 'GitHub Actions'] },
+  { group: 'Lãnh đạo', items: ['Xây dựng đội ngũ', 'Tuyển dụng & mentoring', 'Định hướng kiến trúc', 'Kho tri thức kỹ thuật'] },
 ]
 
 export const CONTACT = [

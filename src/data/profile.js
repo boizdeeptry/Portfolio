@@ -256,13 +256,14 @@ export const PROJECT_GROUP_LABELS = {
 }
 
 export const SKILLS = [
-  { group: 'Languages', items: ['TypeScript', 'JavaScript (Node.js)', 'Go'] },
-  { group: 'Frontend', items: ['Next.js', 'React', 'Vite', 'Tailwind CSS', 'Ant Design', 'Redux / Recoil'] },
-  { group: 'Backend', items: ['NestJS', 'Express', 'REST', 'GraphQL', 'Prisma', 'Mongoose'] },
-  { group: 'Data', items: ['MongoDB (replica sets)', 'PostgreSQL', 'MySQL', 'SQLite'] },
-  { group: 'AI & LLM', items: ['LLM integration', 'RAG pipelines', 'Fine-tuning', 'MCP (Model Context Protocol)', 'OpenClaw', 'Claude Code', 'Windsurf'] },
-  { group: 'Infra & DevOps', items: ['Docker', 'Nginx', 'PM2', 'GitLab CI/CD (self-hosted)', 'Linode / DigitalOcean'] },
-  { group: 'Leadership', items: ['Team building', 'Agile/Scrum', 'Hiring & mentoring', 'Engineering knowledge base'] },
+  { group: 'Languages', items: ['TypeScript', 'Go', 'Node.js'] },
+  { group: 'Architecture', items: ['Hexagonal (ports & adapters)', 'Domain-driven boundaries', 'Polyglot persistence', 'Webhook & payment integration', 'Realtime state design'] },
+  { group: 'Frontend', items: ['Next.js', 'React', 'Recoil / Zustand', 'TanStack Query', 'Apollo Client'] },
+  { group: 'Backend', items: ['NestJS', 'Express', 'GraphQL', 'WebSockets (Socket.io)', 'JWT & SSO'] },
+  { group: 'Data', items: ['MongoDB (replica sets)', 'PostgreSQL', 'Qdrant (vectors)', 'Neo4j (graph)', 'SQLite'] },
+  { group: 'AI & LLM', items: ['RAG & GraphRAG', 'Fine-tuning', 'Prompt engineering', 'MCP (Model Context Protocol)', 'Agent harness design'] },
+  { group: 'Cloud & DevOps', items: ['Docker', 'Kubernetes', 'AWS (AppSync, Lambda, Cognito, CDK)', 'GitLab CI/CD', 'GitHub Actions'] },
+  { group: 'Leadership', items: ['Team building', 'Hiring & mentoring', 'Architecture direction', 'Engineering knowledge base'] },
 ]
 
 export const CONTACT = [

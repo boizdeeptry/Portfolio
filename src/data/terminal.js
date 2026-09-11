@@ -41,6 +41,7 @@ export const TERMINAL = {
       'Most teams add AI. We rebuilt the team around it.',
       '- Claude Code as the standard engineering workflow',
       '- custom skill plugins encode our design system + coding standards',
+      '- harness: a Go binary that installs that working contract into any repo',
       '- agentdc: a Go daemon driving Claude/Codex/OpenCode in real PTYs',
       '- LLM/RAG shipped straight to the Zalo customer channel',
       '# result: 12 → 7 engineers · ~2× delivery throughput',
