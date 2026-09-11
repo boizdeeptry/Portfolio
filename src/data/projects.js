@@ -171,14 +171,15 @@ export const PROJECTS = [
     ],
   },
   {
-    id: 'ai-workflow',
-    repo: 'claude-skills',
+    id: 'harness',
+    repo: 'harness',
     url: null,
-    stack: ['Claude Code', 'Plugins & Hooks', 'CI'],
+    stack: ['Go', 'go:embed', 'Three-way merge', 'CLI'],
     skills: [
-      { group: 'infra', items: ['Claude Code plugin marketplace (marketplace.json)', 'Versioned, CI-gated design-system plugin', 'GitHub Actions CI on the plugin repo', 'hooks.json event wiring', 'Git hooks', 'Agent Mail coordination', 'Beads issue tracker (bd / bv)', 'Git worktree isolation per work track', 'Self-serve QUICKSTART + CHANGELOG discipline'] },
-      { group: 'frontend', items: ['Brand design tokens', 'Bundled font families (Lexend, FzRubik)', 'Vietnamese-diacritic font validation', 'Accessibility rules (:focus-visible)'] },
-      { group: 'patterns', items: ['37 skills, 26 slash-commands, 16 agents', '/new-project → /discuss → /plan → /execute → /ship', 'Coding standards packaged as skills (TypeScript + Go rule sets)', 'Design system as an installable plugin', 'AI-readable brand non-negotiables', 'SessionStart hook injects brand rules', 'PostToolUse hook re-scans every edit', 'midu-brand-review agent — Blocker/Major/Minor gate', 'Subagent-driven development', 'Two-stage review: spec compliance → code quality', 'bead-orchestrator parallel work tracks', 'Test-driven-development enforcement', 'Systematic-debugging six-phase loop', 'Spec/plan artifacts under .planning/'] },
+      { group: 'backend', items: ['Go 1.26', 'Hexagonal architecture — domain ← application ← infrastructure', 'Narrow ports per use case', 'go:embed single-binary distribution', 'os/exec git adapter', 'crypto/rand', 'Hand-written strict JSON decoder', 'Custom CLI parser + presenter', 'Semver comparison', 'Windows console handling'] },
+      { group: 'data', items: ['SHA-256 content hashing', 'manifest.json provenance schema', 'Installed baseline tree for three-way comparison', 'Transaction journal (schema 2)', 'Verified backup tree', 'Managed-path inventory'] },
+      { group: 'infra', items: ['One self-contained executable — no server, database or daemon', 'Human and --json output modes', '--dry-run previews', 'Exit code 2 as the conflict contract', 'Claude Code plugin marketplace', '37 skills · 26 slash-commands · 16 agents', 'CI-gated design-system plugin', 'SessionStart + PostToolUse hooks'] },
+      { group: 'patterns', items: ['Three-way merge via git merge-file --diff3', 'Frozen conflict inputs + resolved/ copy', 'update --continue / --abort', 'Exclusive state lock', 'Recover-before-act', 'Write-and-verify backup', 'Immutable in-memory recovery plan', 'Symlink-race mitigation by immediate revalidation', 'Refusing schema-1 journals with no integrity metadata', 'Version-locked payload identity', 'Working modes — read-only vs change', 'Authority gates', 'Evidence-based completion standard', 'Durable memory in git (docs/plans)', 'Packaged agent skills', 'AGENTS.md HARNESS:BEGIN/END block', 'Coding standards as skills', 'Subagent-driven two-stage review'] },
     ],
   },
 ]
